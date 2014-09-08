@@ -8,6 +8,10 @@ Printer::Printer()
 
 }
 
-void Printer::printDate(long date){
+Printer::~Printer(){
 
+}
+
+void Printer::printDate(long date){
+  //TODO
 }

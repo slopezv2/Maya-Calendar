@@ -4,6 +4,7 @@
 class Printer{
  public:
   Printer();
+  ~Printer();
   void printDate(long date);
 };
 #endif

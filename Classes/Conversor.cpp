@@ -9,6 +9,10 @@ Conversor::Conversor()
 
 }
 
+Conversor::~Conversor(){
+
+}
+
 long Conversor::eval(string input){
   char type;
   long result = 0;
