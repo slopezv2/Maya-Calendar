@@ -1,14 +1,13 @@
-#ifdef Conversor_h
+#ifndef Conversor_h
 #define Conversor_h
 #include <map>
 #include <string>
-#include "Conversor.cpp"
 
 using  namespace std;
 
 class Conversor{
  public:
-  Conversor Conversor();
+  Conversor();
   long eval(string input);
   
  private:

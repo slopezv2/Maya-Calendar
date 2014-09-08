@@ -5,10 +5,11 @@
 #include "Printer.h"
 
 using namespace std;
-Conversor conver;
+Conversor* conver;
+Printer* printer;
 int main(int argc, char* argv[]){
    conver = new Conversor();
-  Printer* printer = new Printer();
+  printer = new Printer();
   string input;
       if(argc < 2){
 	cout << "Maya Conversor"<< endl;

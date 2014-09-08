@@ -2,9 +2,9 @@
 #include <map>
 #include <string>
 
-//using namespace std;
+using namespace std;
 
-Conversor::Conversor():
+Conversor::Conversor()
 {
 
 }
