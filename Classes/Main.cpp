@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
   if(argc < 2){
     cout << "Maya Conversor"<< endl;
     cout << "press :quit to leave the program"<< endl;
-    cout << "Insert a date in this format: "<<endl;
+    cout << "Insert a date in this format: dd(number) month(string) year(number)"<<endl;
     cout << "< ";
     getline(cin, input);
     while(input.compare(":quit") != 0){
