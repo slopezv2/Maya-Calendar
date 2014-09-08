@@ -5,7 +5,7 @@ class Printer{
  public:
   Printer();
   ~Printer();
-  void printDate(long date);
+  void printDate(bool type,long date);
 };
 #endif
 

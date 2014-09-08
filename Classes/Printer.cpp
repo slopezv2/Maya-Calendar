@@ -12,6 +12,6 @@ Printer::~Printer(){
 
 }
 
-void Printer::printDate(long date){
+void Printer::printDate(bool type,long date){
   //TODO
 }

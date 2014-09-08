@@ -12,7 +12,7 @@ class Conversor{
   long eval(string input);
   
  private:
-  char detectType(string input);
+  bool isHAAB(string input);
   long toHAAB(int day, string month, int year);
   long toTzolkin(int day, string month, int year);
 };

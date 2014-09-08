@@ -20,9 +20,11 @@ long Conversor::eval(string input){
   //TODO
 }
 
-char Conversor::detectType(string input){
-  return 'a';
+bool Conversor::isHAAB(string input){
+  return true;
   //TODO
+  //True for HAAB Calendar
+  //False for Tzolkin
 }
 
 long Conversor::toHAAB(int day, string month, int year){
