@@ -15,5 +15,6 @@ class Conversor{
   bool isHAAB(string input);
   long toHAAB(int day, string month, int year);
   long toTzolkin(int day, string month, int year);
+  int monthToInt(string month);
 };
 #endif
