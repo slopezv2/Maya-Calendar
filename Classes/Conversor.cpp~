@@ -71,22 +71,9 @@ bool Conversor::isHAAB(string input){
 
 long Conversor::toHAAB(int day, string month, int year){
   long result = 0;
-  result += (year * 260);
   int monthValue = TzolkinMap.find(month)->second;
-  if((monthValue % 13 ) ==  day || monthValue == day){
-    result += monthValue;
-  }else{
-    int sum = 0;
-    int x = monthValue;
-    int y = day;
-    do{
-      sum += 20;
-      x += 7;
-
-    }while(x % 13 != y);
-    result += sum;
-  }
   return result;
+  //TODO
 }
 
 long Conversor::toTzolkin(int day, string month, int year){
