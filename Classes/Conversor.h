@@ -10,7 +10,8 @@ class Conversor{
   Conversor();
   ~Conversor();
   long eval(string input);
-  
+  map<string, int>* getHAAB();
+  map<string, int>* getTzolkin();
  private:
   bool isHAAB(string input);
   long toHAAB(int day, string month, int year);

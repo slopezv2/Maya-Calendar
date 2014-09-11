@@ -48,7 +48,15 @@ Conversor::Conversor()
   Conversor::TzolkinMap.insert(pair<string,int>("eznab",20));
 }
 
-Conversor::~Conversor(){
+map<string, int>* Conversor::getHAAB(){
+  return &(HAABMap);
+}
+
+map <string, int>* Conversor::getTzolkin(){
+  return &(TzolkinMap);
+}
+
+ Conversor::~Conversor(){
   
 }
 

@@ -9,7 +9,9 @@ Conversor* conver;
 Printer* printer;
 int main(int argc, char* argv[]){
   conver = new Conversor();
-  printer = new Printer();
+  map<string,int>* aux = conver->getHAAB();
+  map<string,int>* aux2 = conver->getTzolkin();
+  printer = new Printer(aux, aux2);
   string input;
   if(argc < 2){
     cout << "Maya Conversor"<< endl;
@@ -22,7 +24,7 @@ int main(int argc, char* argv[]){
       cout << "< ";
       getline(cin,input);
       try{
-	
+	//TODO
       }catch(...){
 	cout << "I don't know how... but you broke me!";
       }
