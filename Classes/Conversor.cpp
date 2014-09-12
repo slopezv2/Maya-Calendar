@@ -92,7 +92,7 @@ long Conversor::toHAAB(int day, string month, int year){
       x += 7;
 
     }while(x % 13 != y);
-    result += sum;
+    result += (sum + monthValue);
   }
   return result;
 }
