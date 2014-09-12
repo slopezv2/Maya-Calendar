@@ -1,0 +1,40 @@
+TzolkinMap //Map with Tzolkin Months
+toHaab(day, month, year){
+result = year * 260
+monthV = TzolkinMap.get(month); //Get month as int.
+	if(monthV % 13 == day || monthV == day){
+		result += monthV
+	} else {
+		sum = 0, x = monthV, y = day
+		do{
+			sum += 20
+			x += 7
+		} while (x%13!=y) {
+			result += sum + monthV
+		}
+	}
+	return result;
+}
+
+HaabMap //Map with Haab Months
+toTzolkin(day, month, year){
+	monthV = HaabMap.get(month)
+	result += day + monthV*20 + year * 365
+	return result
+}
+
+isHaab(input){ //input as month or input.split() in the position 1.
+	if(HaabMap.get(input)==null){
+		return false
+	}
+	return true
+}
+
+printDate(date){
+  year = date/365
+  rest = date%365
+  month = rest / 20
+  day = rest%20
+  monthS = HaabMap.get(month)
+  return day + monthS + year
+}
