@@ -12,8 +12,8 @@ class Conversor{
   long eval(string input);
   map<string, int>* getHAAB();
   map<string, int>* getTzolkin();
- private:
   bool isHAAB(string input);
+ private:
   long toHAAB(int day, string month, int year);
   long toTzolkin(int day, string month, int year);
   map<string,int> HAABMap;

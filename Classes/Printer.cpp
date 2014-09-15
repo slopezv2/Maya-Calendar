@@ -1,6 +1,7 @@
 #include "Printer.h"
 #include <string>
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -29,8 +30,22 @@ void Printer::printDate(bool type,long date){
 	it = HAAB->end();
       }
     }
-    cout << "" + day + " " + monthS + " " + year << endl;
+    cout << day << " " << monthS <<" " <<year << endl;
   }else{
+    int year = date / 220;
+    int rest = date % 220;
+    int monthValue = rest % 20;
+    string 
+    int iterator = rest / 20;
+    int day = monthValue;
+    for(int i = 0; i < iterator;i++){
+      if(day + 7 == 13){
+	day = 13;
+      }else{
+	day = (day + 7) % 13;
+      }
+    }
+    cout << day << " " << monthS <<" " <<year << endl;
 
   }
 }
