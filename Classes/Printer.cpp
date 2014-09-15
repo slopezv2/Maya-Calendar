@@ -35,7 +35,15 @@ void Printer::printDate(bool type,long date){
     int year = date / 220;
     int rest = date % 220;
     int monthValue = rest % 20;
-    string 
+    string monthS;
+    map<string, int>::iterator it;
+    for(it = Tzolkin->begin(); it != Tzolkin->end();++it){
+      if(it->second == monthValue){
+        monthS = it -> first;
+	it = Tzolkin->end();
+      }
+    }
+
     int iterator = rest / 20;
     int day = monthValue;
     for(int i = 0; i < iterator;i++){
