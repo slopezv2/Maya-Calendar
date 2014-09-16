@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include <iostream>
-
+#include <sstream>
 using namespace std;
 
 Printer::Printer(map<string,int>* pHAAB, map<string,int>* pTzolkin)
@@ -15,7 +15,7 @@ Printer::~Printer(){
   
 }
 
-void Printer::printDate(bool type,long date){
+string Printer::printDate(bool type,long date){
   if(!type){
     int year = (date / 365);
     int rest = date % 365;
@@ -31,6 +31,11 @@ void Printer::printDate(bool type,long date){
       }
     }
     cout << day<<" "<<monthS<<" "<<year<<endl;
+    stringstream stream;
+    string data;
+    stream << day << " " << monthS <<" " <<year;
+    data = stream.str();
+    return data;
   }else{
     int year = (date / 220);
     int rest = date % 220;
@@ -52,6 +57,10 @@ void Printer::printDate(bool type,long date){
       }
     }
     cout << day << " " << monthS <<" " <<year << endl;
-
+    stringstream stream;
+    string data;
+    stream << day << " " << monthS <<" " <<year;
+    data = stream.str();
+    return data;
   }
 }

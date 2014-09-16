@@ -3,6 +3,10 @@
 #include <map>
 #include "Conversor.h"
 #include "Printer.h"
+#include <fstream>
+#include <iomanip>
+#include <stdio.h>
+#include <stdlib.h>
 
 using namespace std;
 Conversor* conver;
@@ -59,7 +63,29 @@ int main(int argc, char* argv[]){
 	getline(cin,input);
       }
     } else {
+      string newName = "output.txt";
+      string line;
       //Lectura del Fichero
+      string directory = argv[1];
+      ifstream file(directory.c_str());
+      string numbLines;
+      ofstream newFile(newName.c_str());
+      getline(file,numbLines);
+      int intLines;
+      intLines = atoi(numbLines.c_str());
+      newFile << numbLines << "\n";
+      while(intLines > 0){
+	getline(file,line);
+	long result= conver->eval(line);
+	vector<string> temp = conver->split(line);
+	string monthT = temp.at(1);
+	string resultStr = (printer->printDate(conver->isHAAB(monthT),result));
+	newFile<<resultStr<<"\n";
+	intLines--;
+      }
+      file.close();
+      newFile.close();
+      
     }
     return 0;
   } catch (...){
