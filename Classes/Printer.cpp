@@ -16,7 +16,7 @@ Printer::~Printer(){
 }
 
 void Printer::printDate(bool type,long date){
-  if(!type){
+  if(type){
     int year = date / 365;
     int rest = date % 365;
     int month = rest / 20;
@@ -29,6 +29,7 @@ void Printer::printDate(bool type,long date){
 	it = HAAB->end();
       }
     }
+    cout << "Before last print: " << monthS << endl;
     cout << day << " " << monthS <<" " <<year << endl;
   }else{
     int year = date / 220;
@@ -42,7 +43,6 @@ void Printer::printDate(bool type,long date){
 	it = Tzolkin->end();
       }
     }
-
     int iterator = rest / 20;
     int day = monthValue;
     for(int i = 0; i < iterator;i++){

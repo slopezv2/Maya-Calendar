@@ -17,8 +17,8 @@ class Conversor{
   bool isHAAB(string input);
  private:
   vector<string> split(string input);
-  long toHAAB(int day, string month, int year);
-  long toTzolkin(int day, string month, int year);
+  long TzolkinToLong(int day, string month, int year);
+  long HAABToLong(int day, string month, int year);
   map<string,int> HAABMap;
   map<string, int> TzolkinMap;
 };

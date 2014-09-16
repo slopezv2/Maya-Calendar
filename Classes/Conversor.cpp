@@ -82,9 +82,9 @@ long Conversor::eval(string input){
   day = atoi(date.at(0).c_str()); //to i
   year = atoi(date.at(2).c_str()); //to i
   if(isHAAB(input)){
-    return toTzolkin(day, month, year);
+    return HAABToLong(day, month, year);
   } else {
-    return toHAAB(day, month, year);
+    return TzolkinToLong(day, month, year);
   }
 }
 
@@ -98,7 +98,7 @@ bool Conversor::isHAAB(string input){
   //False for Tzolkin
 }
 
-long Conversor::toHAAB(int day, string month, int year){
+long Conversor::TzolkinToLong(int day, string month, int year){
   long result = 0;
   result += (year * 260);
   int monthValue = TzolkinMap.find(month)->second;
@@ -117,7 +117,7 @@ long Conversor::toHAAB(int day, string month, int year){
   return result;
 }
 
-long Conversor::toTzolkin(int day, string month, int year){
+long Conversor::HAABToLong(int day, string month, int year){
   int monthValue = HAABMap.find(month)->second;
   long result = 0;
   result += day;
