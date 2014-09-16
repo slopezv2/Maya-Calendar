@@ -26,8 +26,7 @@ int consoleCommands(int argc, char* argv[]){
       return 0;
     }
   } else {
-    int yoMamaSoFatSheOverlapsedTheIntLimit = -32767 ;
-    return yoMamaSoFatSheOverlapsedTheIntLimit;
+    return 2;
   }
 }
 
@@ -50,7 +49,11 @@ int main(int argc, char* argv[]){
       cout << "> ";
       getline(cin, input);
       while(input.compare(":quit") != 0){
-	printer->printDate(conver->isHAAB(input),conver->eval(input));
+	long result= conver->eval(input);
+	cout <<"Long:"<<result<<endl;
+	vector<string> temp = conver->split(input);
+	string monthT = temp.at(1);
+	printer->printDate(conver->isHAAB(monthT),result);
 	cout << "insert a new date: "<<endl;
 	cout << "> ";
 	getline(cin,input);

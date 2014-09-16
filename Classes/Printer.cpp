@@ -16,31 +16,37 @@ Printer::~Printer(){
 }
 
 void Printer::printDate(bool type,long date){
-  if(type){
-    int year = date / 365;
+  if(!type){
+    cout<<"Printer-HAAB"<<endl;
+    int year = (date / 365);
     int rest = date % 365;
-    int month = rest / 20;
-    int day = rest % 20;
-    string monthS;
+    int monthVa = rest / 20;
+    cout <<"Printing month on Printer-PrintDate:"<<monthVa<<endl;
+    int day = (rest % 20) - 1;
+    string monthS= "             ";
     map<string, int>::iterator it;
     for(it = HAAB->begin(); it != HAAB->end();++it){
-      if(it->second == month){
-	monthS = it -> first;
+      if((it->second) == (monthVa*20)){
+	cout <<"printing key:" << it->first<<endl;
+	monthS = it->first;
+	cout<<"on Printing:" <<monthS<<endl;
 	it = HAAB->end();
       }
     }
     cout << "Before last print: " << monthS << endl;
     cout << day << " " << monthS <<" " <<year << endl;
   }else{
-    int year = date / 220;
+    cout << "printer-Tzolkin"<<endl;
+    int year = (date / 220);
     int rest = date % 220;
     int monthValue = rest % 20;
-    string monthS;
+    cout<<"MonthValue:"<<monthValue <<endl;
+    string monthS = "             ";
     map<string, int>::iterator it;
     for(it = Tzolkin->begin(); it != Tzolkin->end();++it){
       if(it->second == monthValue){
         monthS = it -> first;
-	it = Tzolkin->end();
+	cout<<"on Printing:" <<monthS<<endl;
       }
     }
     int iterator = rest / 20;

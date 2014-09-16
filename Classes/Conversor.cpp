@@ -75,15 +75,19 @@ vector<string> Conversor::split(string input){
 
 long Conversor::eval(string input){
   int day = 0, year = 0;
-  string month = "";
+  string month;
   vector<string> date = split(input);
   month = date.at(1);
-  cout << "en eval: "<<month <<endl;
-  day = atoi(date.at(0).c_str()); //to i
-  year = atoi(date.at(2).c_str()); //to i
-  if(isHAAB(input)){
+  cout << "en eval:"<<month <<endl;
+  day = atoi(date.at(0).c_str());
+  cout<<"Valor dia:"<<day<<endl;
+  year = atoi(date.at(2).c_str());
+  cout<<"Valor anio:"<<year<<endl;//to i
+  if(isHAAB(month)){
+    cout <<"Es HAAB"<<endl;
     return HAABToLong(day, month, year);
   } else {
+    cout<<"Es Tzolkin"<<endl;
     return TzolkinToLong(day, month, year);
   }
 }
@@ -92,8 +96,9 @@ bool Conversor::isHAAB(string input){
   map<string,int>::iterator it = HAABMap.find(input);
   if (it == HAABMap.end()){
     return false;
+  }else{
+    return true;
   }
-  return true;
   //True for HAAB Calendar
   //False for Tzolkin
 }
@@ -120,7 +125,7 @@ long Conversor::TzolkinToLong(int day, string month, int year){
 long Conversor::HAABToLong(int day, string month, int year){
   int monthValue = HAABMap.find(month)->second;
   long result = 0;
-  result += day;
+  result += (day+1);
   result += monthValue;
   result += (year * 365);
   return result;
