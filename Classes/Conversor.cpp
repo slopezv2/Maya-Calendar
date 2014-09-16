@@ -69,7 +69,6 @@ vector<string> Conversor::split(string input){
   pos = input.find(" ");
   output.push_back(input.substr(0, pos));
   output.push_back(input.substr(pos+1));
-  cout << output.at(0) << output.at(1) << output.at(2) << endl;
   return (output);
 }
 
@@ -78,11 +77,8 @@ long Conversor::eval(string input){
   string month;
   vector<string> date = split(input);
   month = date.at(1);
-  cout << "en eval:"<<month <<endl;
   day = atoi(date.at(0).c_str());
-  cout<<"Valor dia:"<<day<<endl;
-  year = atoi(date.at(2).c_str());
-  cout<<"Valor anio:"<<year<<endl;//to i
+  year = atoi(date.at(2).c_str());//to i
   if(isHAAB(month)){
     cout <<"Es HAAB"<<endl;
     return HAABToLong(day, month, year);
