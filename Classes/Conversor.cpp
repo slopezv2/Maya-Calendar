@@ -1,11 +1,12 @@
 #include "Conversor.h"
 #include <map>
 #include <string>
+#include <vector>
+#include <stdlib.h>
 
 using namespace std;
 
-Conversor::Conversor()
-{
+Conversor::Conversor(){
   Conversor::HAABMap.insert(pair<string,int>("pop",0));
   Conversor::HAABMap.insert(pair<string,int>("no",20));
   Conversor::HAABMap.insert(pair<string,int>("zip",40));
@@ -60,11 +61,32 @@ map <string, int>* Conversor::getTzolkin(){
   
 }
 
+vector<string> Conversor::split(string input){
+  vector<string> output;
+  size_t pos = input.find(" ");
+  cout << "Punto 1" << endl;
+  output.push_back(input.substr(0,pos-1));
+  cout << "Punto 2" << endl;
+  input = input.substr(pos+1);
+  pos = input.find(" ");
+  cout << "Punto 3" << endl;
+  output.push_back(input.substr(0, pos-1));
+  output.push_back(input.substr(pos+1));
+  return (output);
+}
+
 long Conversor::eval(string input){
-  char type;
-  long result = 0;
-  return result;
-  //TODO}
+  int day = 0, year = 0;
+  string month = "";
+  vector<string> date = split(input);
+  month = date.at(1);
+  day = atoi(date.at(0).c_str()); //to i
+  year = atoi(date.at(2).c_str()); //to i
+  if(isHAAB(input)){
+    return toTzolkin(day, month, year);
+  } else {
+    return toHAAB(day, month, year);
+  }
 }
 
 bool Conversor::isHAAB(string input){
@@ -90,7 +112,6 @@ long Conversor::toHAAB(int day, string month, int year){
     do{
       sum += 20;
       x += 7;
-
     }while(x % 13 != y);
     result += (sum + monthValue);
   }

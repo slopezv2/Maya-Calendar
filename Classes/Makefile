@@ -1,6 +1,6 @@
-Main: Main.o Conversor.o Printer.o 
-	g++ -g -o Main Main.o Conversor.o Printer.o
-	@echo "Termino de generar Main"
+MayaCalendar: Main.o Conversor.o Printer.o 
+	g++ -g -o MayaCalendar Main.o Conversor.o Printer.o
+	@echo "Termino de generar MayaCalendar."
 
 
 Main.o: Main.cpp Conversor.h Printer.h
@@ -14,4 +14,4 @@ Printer.o: Printer.cpp Printer.h
 
 clean:
 	rm -f *.o
-	rm -f Main
+	rm -f MayaCalendar
