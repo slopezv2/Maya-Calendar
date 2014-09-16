@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
       cout << "> ";
       getline(cin, input);
       while(input.compare(":quit") != 0){
-	
+	printer->printDate(conver->isHAAB(input),conver->eval(input));
 	cout << "insert a new date: "<<endl;
 	cout << "> ";
 	getline(cin,input);

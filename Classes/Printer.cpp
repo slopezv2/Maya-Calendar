@@ -16,8 +16,7 @@ Printer::~Printer(){
 }
 
 void Printer::printDate(bool type,long date){
-  //TODO
-  if(type){
+  if(!type){
     int year = date / 365;
     int rest = date % 365;
     int month = rest / 20;
@@ -53,6 +52,7 @@ void Printer::printDate(bool type,long date){
 	day = (day + 7) % 13;
       }
     }
+    cout << "Mi mes: "<< monthS << endl;
     cout << day << " " << monthS <<" " <<year << endl;
 
   }
