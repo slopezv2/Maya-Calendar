@@ -20,7 +20,6 @@ string Printer::printDate(bool type,long date){
     int year = (date / 365);
     int rest = date % 365;
     int monthVa = rest / 20;
-    cout <<"Printing month on Printer-PrintDate:"<<monthVa<<endl;
     int day = (rest % 20) - 1;
     string monthS= "             ";
     map<string, int>::iterator it;
