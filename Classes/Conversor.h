@@ -7,6 +7,9 @@
 
 using  namespace std;
 
+/*
+ * Conversor Definition
+ */
 class Conversor{
  public:
   Conversor();

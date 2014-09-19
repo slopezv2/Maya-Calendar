@@ -9,9 +9,18 @@
 #include <stdlib.h>
 
 using namespace std;
+
+/*
+ * Pointers to each object from the classes Conversor and Printer.
+ * conver has the methods to changes a date between both calendars to long and detects the type of calendar.
+ * printer has the methods to print a date using as parameters the type of calendar (bool) and the number in long.
+ */
 Conversor* conver;
 Printer* printer;
 
+/*
+ * Method to displays different options of the program.
+ */
 int consoleCommands(int argc, char* argv[]){
   if(argc > 1){
     if((strcmp(argv[1],"--help") == 0) || (strcmp(argv[1],"-h")) == 0 || (strcmp(argv[1],"-?")==0)){
@@ -34,24 +43,31 @@ int consoleCommands(int argc, char* argv[]){
   }
 }
 
+/*
+ * The main of the program
+ */
 int main(int argc, char* argv[]){
   try{
     
     if(consoleCommands(argc, argv)==0){
+      // Checking if there are arguments.
       return 0;
     }
     
     conver = new Conversor();
+    // Printer needs two parameters: Pointer to each map that contains the month information.
     map<string,int>* aux = conver->getHAAB();
     map<string,int>* aux2 = conver->getTzolkin();
     printer = new Printer(aux, aux2);
     string input;
     if(argc<2){
+      // If the user will use the console
       cout << "Maya Conversor"<< endl;
       cout << "press :quit to leave the program"<< endl;
       cout << "Insert a date in this format: dd(number) month(string) year(number)"<<endl;
       cout << "> ";
       getline(cin, input);
+      // Loop to red the dates until user introduce ":quit" in the console.
       while(input.compare(":quit") != 0){
 	long result= conver->eval(input);
 	cout <<"Long:"<<result<<endl;
@@ -63,9 +79,10 @@ int main(int argc, char* argv[]){
 	getline(cin,input);
       }
     } else {
+      // If the user put a file as parameter for the program.
       string newName = "output.txt";
       string line;
-      //Lectura del Fichero
+      //Reading the file.
       string directory = argv[1];
       ifstream file(directory.c_str());
       string numbLines;
@@ -89,6 +106,6 @@ int main(int argc, char* argv[]){
     }
     return 0;
   } catch (...){
-    cout << "Dono bro, u f*cked" << endl;
+    cout << "You broke me, please check your input" << endl;
   }
 }

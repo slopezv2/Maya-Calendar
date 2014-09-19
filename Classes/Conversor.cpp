@@ -6,6 +6,10 @@
 
 using namespace std;
 
+/*
+ * Constructor for Conversor
+ * Here maps are initialized with their keys-values.
+ */
 Conversor::Conversor(){
   Conversor::HAABMap.insert(pair<string,int>("pop",0));
   Conversor::HAABMap.insert(pair<string,int>("no",20));
@@ -61,6 +65,9 @@ map <string, int>* Conversor::getTzolkin(){
   
 }
 
+/*
+ * Method to split the input and get the day, month and year into a vector.
+ */
 vector<string> Conversor::split(string input){
   vector<string> output;
   size_t pos = input.find(" ");
@@ -72,6 +79,11 @@ vector<string> Conversor::split(string input){
   return (output);
 }
 
+/*
+ * Method to control the input transformation from string to long.
+ * Parameter is the input.
+ * the number represents the days quantity. 
+ */
 long Conversor::eval(string input){
   int day = 0, year = 0;
   string month;
@@ -88,6 +100,9 @@ long Conversor::eval(string input){
   }
 }
 
+/*
+ * Method to detect what kind of map is the string input.
+ */
 bool Conversor::isHAAB(string input){
   map<string,int>::iterator it = HAABMap.find(input);
   if (it == HAABMap.end()){
@@ -99,6 +114,11 @@ bool Conversor::isHAAB(string input){
   //False for Tzolkin
 }
 
+
+/*
+ * Private method to change the Tzolkin date to long.
+ * Parameters  provided by the split method
+ */
 long Conversor::TzolkinToLong(int day, string month, int year){
   long result = 0;
   result += (year * 260);
@@ -120,6 +140,9 @@ long Conversor::TzolkinToLong(int day, string month, int year){
   return result;
 }
 
+/*
+ * Method to change the HAAB date to long
+ */
 long Conversor::HAABToLong(int day, string month, int year){
   int monthValue = HAABMap.find(month)->second;
   long result = 0;

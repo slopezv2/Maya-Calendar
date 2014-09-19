@@ -4,6 +4,9 @@
 #include <string>
 
 using namespace std;
+/*
+ * Definition for Printer Class.
+ */
 class Printer{
  public:
   Printer(map<string,int>* pHAAB, map<string,int>* pTzolkin);

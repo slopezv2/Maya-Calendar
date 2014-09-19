@@ -7,6 +7,7 @@ using namespace std;
 
 Printer::Printer(map<string,int>* pHAAB, map<string,int>* pTzolkin)
 {
+  // pointers to each map to search the months.
   Printer::HAAB = pHAAB;
   Printer::Tzolkin = pTzolkin;
 }
@@ -15,8 +16,13 @@ Printer::~Printer(){
   
 }
 
+/*
+ * Method to print the date in whatever of the two formats
+ * Parameters are bool for the type and long for the date in days.
+ */
 string Printer::printDate(bool type,long date){
   if(!type){
+    // If it's to HAAB format.
     int year = (date / 365);
     int rest = date % 365;
     int monthVa = rest / 20;
@@ -27,10 +33,10 @@ string Printer::printDate(bool type,long date){
     }
     string monthS= "             ";
     map<string, int>::iterator it;
+    // Search the month string in map.
     for(it = HAAB->begin(); it != HAAB->end();++it){
       if((it->second) == (monthVa*20)){
 	monthS = it->first;
-	//it = HAAB->end();
       }
     }
     cout << day<<" "<<monthS<<" "<<year<<endl;
@@ -40,11 +46,13 @@ string Printer::printDate(bool type,long date){
     data = stream.str();
     return data;
   }else{
+    // for Tzolkin format
     int year = (date / 260);
     int rest = date % 260;
     int monthValue = rest % 20;
     string monthS = "             ";
     map<string, int>::iterator it;
+    // Search the month in string using map
     for(it = Tzolkin->begin(); it != Tzolkin->end();++it){
       if(it->second == monthValue){
         monthS = it -> first;
@@ -64,6 +72,7 @@ string Printer::printDate(bool type,long date){
     string data;
     stream << day << " " << monthS <<" " <<year;
     data = stream.str();
+    // Return the date in "dd month yy" format
     return data;
   }
 }
