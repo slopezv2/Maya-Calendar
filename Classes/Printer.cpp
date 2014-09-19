@@ -22,7 +22,8 @@ string Printer::printDate(bool type,long date){
     int monthVa = rest / 20;
     int day = (rest % 20) - 1;
     if(rest % 20 == 0){
-      day += 1;
+      day = 19;
+      monthVa -= 1;
     }
     string monthS= "             ";
     map<string, int>::iterator it;
