@@ -46,7 +46,7 @@ Conversor::Conversor(){
   Conversor::TzolkinMap.insert(pair<string,int>("caban",17));
   Conversor::TzolkinMap.insert(pair<string,int>("eznab",18));
   Conversor::TzolkinMap.insert(pair<string,int>("canac",19));
-  Conversor::TzolkinMap.insert(pair<string,int>("eznab",20));
+  Conversor::TzolkinMap.insert(pair<string,int>("ahau",20));
 }
 
 map<string, int>* Conversor::getHAAB(){
@@ -107,12 +107,14 @@ long Conversor::TzolkinToLong(int day, string month, int year){
     result += monthValue;
   }else{
     int sum = 0;
-    int x = monthValue;
+    int x = (monthValue % 13);
     int y = day;
-    do{
+    sum += 20;
+    x += 7;
+    while((x % 13 != y) && !((x % 13)+ 13 == y)){
       sum += 20;
       x += 7;
-    }while(x % 13 != y);
+    }
     result += (sum + monthValue);
   }
   return result;

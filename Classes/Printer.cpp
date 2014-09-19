@@ -21,12 +21,15 @@ string Printer::printDate(bool type,long date){
     int rest = date % 365;
     int monthVa = rest / 20;
     int day = (rest % 20) - 1;
+    if(rest % 20 == 0){
+      day += 1;
+    }
     string monthS= "             ";
     map<string, int>::iterator it;
     for(it = HAAB->begin(); it != HAAB->end();++it){
       if((it->second) == (monthVa*20)){
 	monthS = it->first;
-	it = HAAB->end();
+	//it = HAAB->end();
       }
     }
     cout << day<<" "<<monthS<<" "<<year<<endl;
@@ -36,8 +39,8 @@ string Printer::printDate(bool type,long date){
     data = stream.str();
     return data;
   }else{
-    int year = (date / 220);
-    int rest = date % 220;
+    int year = (date / 260);
+    int rest = date % 260;
     int monthValue = rest % 20;
     string monthS = "             ";
     map<string, int>::iterator it;
@@ -47,7 +50,7 @@ string Printer::printDate(bool type,long date){
       }
     }
     int iterator = rest / 20;
-    int day = monthValue;
+    int day = (monthValue % 13);
     for(int i = 0; i < iterator;i++){
       if(day + 7 == 13){
 	day = 13;
