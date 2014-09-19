@@ -1,5 +1,6 @@
 TzolkinMap //Map with Tzolkin Months
-toHaab(day, month, year){
+
+TzolkinToLong(day, month, year){
 result = year * 260
 monthV = TzolkinMap.get(month); //Get month as int.
 	if(monthV % 13 == day || monthV == day){
@@ -9,32 +10,69 @@ monthV = TzolkinMap.get(month); //Get month as int.
 		do{
 			sum += 20
 			x += 7
-		} while (x%13!=y) {
-			result += sum + monthV
-		}
+		}while (x%13!=y && !(x % 13) + 13 == y)
+		result += sum + monthV
 	}
 	return result;
 }
 
 HaabMap //Map with Haab Months
-toTzolkin(day, month, year){
+
+HAABToLong(day, month, year){
 	monthV = HaabMap.get(month)
-	result += day + monthV*20 + year * 365
+	result += (day +1)
+	result += (year * 365)
 	return result
 }
 
-isHaab(input){ //input as month or input.split() in the position 1.
+isHaab(input){ 
+//input as month or input.split() in the position 1.
 	if(HaabMap.get(input)==null){
 		return false
-	}
-	return true
+	}else {
+	      return true
+	}	
 }
 
-printDate(date){
-  year = date/365
-  rest = date%365
-  month = rest / 20
-  day = rest%20
-  monthS = HaabMap.get(month)
-  return day + monthS + year
+printDate(type,date){
+  if(!type){
+  // HAAB format
+	 year= date/ 365
+	 rest = date % 365
+  	 monthVa = rest / 20
+  	 day = (rest % 20) -1
+	 if(rest % 20 == 0){
+		day = 19
+		monthVa -= 1 
+	 }
+	 months = ""
+  	 monthS = HaabMap.get(month)
+  	 return day + monthS + year
+   }else{
+	year = date / 260
+	rest = date % 260
+	monthValue = rest % 260
+	monthS = HaabMap.get(month)
+	iterator = rest / 20
+	day = monthValue % 13
+	for(i = 0; i< iterator; i++){
+	      if (day + 7 == 13){
+	      	 day = 13
+	      }else{
+		day = (day + 7) % 13
+	      }
+	}
+	return day + monthS + year
+   }	
+}
+
+split(input){
+	vector output
+	posString = input.find(" ") // return a pointer to the charater " "
+	output.push_back(input.substr(0, posString))
+	input = input.substr(pos + 1)
+	posString = input.find(" ")
+	output.push_back(input.substr(0,pos))
+	output.push_back(input.substr(pos + 1))
+	return output
 }
